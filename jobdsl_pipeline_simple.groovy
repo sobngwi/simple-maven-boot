@@ -5,7 +5,7 @@ DslFactory factory = this
 factory.job("simple-maven-boot-build") {
     deliveryPipelineConfiguration("Build")
     triggers { githubPush() }
-    scm { github("applied-continuous-delivery-livelessons/simple-maven-boot") }
+    scm { github("sobngwi/simple-maven-boot") }
     wrappers { colorizeOutput() }
     steps { shell("./mvnw clean install") }
     publishers {
@@ -19,7 +19,7 @@ factory.job("simple-maven-boot-build") {
 
 factory.job("simple-maven-boot-deploy") {
     deliveryPipelineConfiguration("Deployment")
-    scm { github("applied-continuous-delivery-livelessons/simple-maven-boot") }
+    scm { github("sobngwi/simple-maven-boot") }
     steps { shell('echo "Deploying artifact"') }
 }
 

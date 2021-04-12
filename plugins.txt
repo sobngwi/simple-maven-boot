@@ -33,6 +33,7 @@ maven-plugin:3.10
 workflow-job:2.40
 bouncycastle-api:2.20
 gradle:1.36
+groovy:2.0
 trilead-api:1.0.13
 blueocean-i18n:1.24.5
 bootstrap4-api:4.6.0-3

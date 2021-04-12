@@ -1,4 +1,7 @@
 node("") {
+    stage ('Starts') {
+        echo "Deployment Starts."
+    }
     stage("build") {
         git("https://github.com/applied-continuous-delivery-livelessons/simple-maven-boot.git")
         sh("./mvnw clean install")
@@ -9,5 +12,8 @@ node("") {
     stage("results") {
         junit("**/target/surefire-reports/TEST-*.xml")
         archive("target/*.jar")
+    }
+    stage ('end') {
+        echo "Deployment End."
     }
 }

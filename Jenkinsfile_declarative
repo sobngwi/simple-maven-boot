@@ -9,12 +9,12 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                gradlew('clean', 'classes')
+                gradlew('clean', 'compile')
             }
         }
         stage('Unit Tests') {
             steps {
-                gradlew('test')
+                mvnw('test')
             }
             post {
                 always {
@@ -25,7 +25,7 @@ pipeline {
 
         stage('Assemble') {
             steps {
-                gradlew('assemble')
+                mvnw('assemble')
                 stash includes: '**/build/libs/*.war', name: 'app'
             }
         }
@@ -45,6 +45,6 @@ pipeline {
     }
 }
 
-def gradlew(String... args) {
-    sh "./gradlew ${args.join(' ')} -s"
+def mvnw(String... args) {
+    sh "./mvnw ${args.join(' ')} -X"
 }

@@ -36,7 +36,8 @@ pipeline {
         stage('Promotion') {
             steps {
                 timeout(time: 1, unit:'DAYS') {
-                    input 'Deploy to Production?'
+                    //input 'Deploy to Production?'
+                    echo 'Deploy to Production'
                 }
             }
         }
@@ -45,6 +46,11 @@ pipeline {
     post {
         failure {
             mail to: 'sobngwi@gmail.com', subject: 'Build failed', body: 'Please fix!'
+        }
+        sucess {
+            archiveArtifacts artifacts: '**/target/*.jar',
+                             fingerprint: true
+            junit '**/target/surefire-reports/*.xml'
         }
     }
 }

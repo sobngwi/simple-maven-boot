@@ -5,7 +5,11 @@ pipeline {
     triggers {
         pollSCM('*/5 * * * *')
     }
-
+    when {
+        not {
+            branch != 'master'
+        }
+    }
     stages {
         stage('Compile') {
             steps {

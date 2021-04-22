@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                gradlew('clean', 'compile')
+                mvnw('clean', 'compile')
             }
         }
         stage('Unit Tests') {

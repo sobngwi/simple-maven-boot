@@ -25,7 +25,7 @@ pipeline {
 
         stage('Assemble') {
             steps {
-                mvnw('assemble')
+                mvnw('install')
                 stash includes: '**/build/libs/*.war', name: 'app'
             }
         }

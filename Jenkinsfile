@@ -14,6 +14,6 @@ node("") {
         archive("target/*.jar")
     }
     stage ('end') {
-        echo "Deployment End."
+        echo "Deployment End..."
     }
 }

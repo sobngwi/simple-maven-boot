@@ -47,7 +47,7 @@ pipeline {
         failure {
             mail to: 'sobngwi@gmail.com', subject: 'Build failed', body: 'Please fix!'
         }
-        sucess {
+        success {
             archiveArtifacts artifacts: '**/target/*.jar',
                              fingerprint: true
             junit '**/target/surefire-reports/*.xml'
